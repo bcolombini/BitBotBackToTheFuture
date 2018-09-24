@@ -8,10 +8,10 @@ using System.Threading.Tasks;
 
 namespace BitBotBackToTheFuture
 {
-    class JsonParse
+    class JsonParseA
     {
         private static string location = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetEntryAssembly().Location) + "\\";
-        private static string configJsonFileDirectory = location + "key.txt";
+        private static string configJsonFileDirectory = location + "key.json";
 
         public string bitmexKey { get; private set; }
         public string bitmexSecret { get; private set; }
@@ -41,7 +41,7 @@ namespace BitBotBackToTheFuture
         public List<JToken> indicatorsEntryDecision { get; private set; }
 
 
-        public JsonParse() {
+        public JsonParseA() {
             parseJsonToObject();
         }
 

@@ -28,6 +28,7 @@ bld/
 [Oo]bj/
 [Ll]og/
 key.txt
+key.json
 config.json
 
 # Visual Studio 2015/2017 cache/options directory

@@ -1,4 +1,5 @@
 ﻿using BitBotBackToTheFuture;
+using BitBotBackToTheFuture.Models;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
@@ -9,8 +10,11 @@ using System.Threading.Tasks;
 
 public class Database
 {
-    private static JsonParse configJson = new JsonParse();
-    //private static string dataBaseFile = MainClass.location + "bd.xml";
+    private static string configJsonFileDirectory = MainClass.location + "key.json";
+
+    private static JsonParse<ConfigJsonFileModel> jsonParsed = new JsonParse<ConfigJsonFileModel>(configJsonFileDirectory);
+    private static ConfigJsonFileModel configJson = jsonParsed.objectParsed;
+
     public static void captureDataJob()
     {
         while (true)

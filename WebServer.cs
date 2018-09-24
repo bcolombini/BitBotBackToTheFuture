@@ -4,10 +4,13 @@ using System.Threading;
 using System.Linq;
 using System.Text;
 using BitBotBackToTheFuture;
+using BitBotBackToTheFuture.Models;
 
 public class WebServer
 {
-    private static JsonParse configJson = new JsonParse();
+    private static string configJsonFileDirectory = MainClass.location + "key.json";
+    private static JsonParse<ConfigJsonFileModel> jsonParsed = new JsonParse<ConfigJsonFileModel>(configJsonFileDirectory);
+    private static ConfigJsonFileModel configJson = jsonParsed.objectParsed;
 
     public static string SendResponse(HttpListenerRequest request)
     {
@@ -166,7 +169,7 @@ public class WebServer
     }
 
     public WebServer(Func<HttpListenerRequest, string> method, params string[] prefixes)
-        : this(prefixes, method) { }
+       : this(prefixes, method) { }
 
     public void Run()
     {
