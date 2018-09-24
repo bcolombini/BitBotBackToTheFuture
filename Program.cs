@@ -171,10 +171,6 @@ class MainClass
                 }
             }
 
-
-            
-
-
             bool automaticTendency = configJson.statusLong == "automatic";
 
             //LOOP 

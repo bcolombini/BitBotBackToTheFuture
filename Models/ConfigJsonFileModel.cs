@@ -14,33 +14,33 @@ namespace BitBotBackToTheFuture.Models
         public string bitmexSecret { get; set; }
         public string bitmexKeyWeb { get; set; }
         public string bitmexSecretWeb { get; set; }
-        public string timeGraph { get;  set; }
+        public string timeGraph { get; set; }
         public string statusShort { get; set; }
         public string statusLong { get; set; }
-        public string pair { get;  set; }
-        public int qtdyContacts { get;  set; }
-        public int interval { get;  set; }
-        public int intervalOrder { get;  set; }
-        public int intervalCapture { get;  set; }
-        public int intervalCancelOrder { get;  set; }
+        public string pair { get; set; }
+        public int qtdyContacts { get; set; }
+        public int interval { get; set; }
+        public int intervalOrder { get; set; }
+        public int intervalCapture { get; set; }
+        public int intervalCancelOrder { get; set; }
         public int positionContracts { get; set; }
-        public double profit { get;  set; }
-        public int limiteOrder { get;  set; }
-        public double fee { get;  set; }
-        public double stoploss { get;  set; }
-        public double stopgain { get;  set; }
-        public string bitmexDomain { get;  set; }
-        public bool roeAutomatic { get;  set; }
-        public string webserverConfig { get;  set; }
-        public bool webserver { get;  set; }
-        public List<IndicatorsEntry> indicatorsEntry { get;  set; }
-        public List<IndicatorsEntry> indicatorsEntryCross { get;  set; }
-        public List<IndicatorsEntry> indicatorsEntryDecision { get;  set; }
-       
-        internal string getValue(IndicatorsEntryType indicatorsEntryType, String nameIndicator, String nameParameter)
-        {
+        public double profit { get; set; }
+        public int limiteOrder { get; set; }
+        public double fee { get; set; }
+        public double stoploss { get; set; }
+        public double stopgain { get; set; }
+        public string bitmexDomain { get; set; }
+        public bool roeAutomatic { get; set; }
+        public string webserverConfig { get; set; }
+        public bool webserver { get; set; }
+        public List<IndicatorsEntry> indicatorsEntry { get; set; }
+        public List<IndicatorsEntry> indicatorsEntryCross { get; set; }
+        public List<IndicatorsEntry> indicatorsEntryDecision { get; set; }
+
+        internal string getValue(IndicatorsEntryType indicatorsEntryType, String nameIndicator, String nameParameter) {
             List<IndicatorsEntry> toInterator;
-            switch (indicatorsEntryType) {
+            switch (indicatorsEntryType)
+            {
                 case IndicatorsEntryType.INDICATORS_ENTRY:
                     toInterator = indicatorsEntry;
                     break;
@@ -53,22 +53,22 @@ namespace BitBotBackToTheFuture.Models
                 default:
                     return null;
             }
+            return findIndicatorInIndicatorEntry(toInterator, nameIndicator, nameParameter);
+        }
+
+        internal string findIndicatorInIndicatorEntry(List<IndicatorsEntry> toInterator, String nameIndicator, String nameParameter) {
             foreach (var item in toInterator)
                 if (item.name.ToString().Trim().ToUpper() == nameIndicator.ToUpper().Trim())
                     switch (nameParameter)
                     {
                         case "tendency":
                             return item.tendency.ToString().Trim();
-                            break;
                         case "decision":
                             return item.decision.ToString().Trim();
-                            break;
                         case "decisionPoint":
                             return item.decisionPoint.ToString().Trim();
-                            break;
                     }
             return null;
         }
-
     }
 }
